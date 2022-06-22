@@ -1,6 +1,6 @@
-# \<reveal.js-nested-fragments>
+# reveal.js-nested-fragments
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+A [Reveal.js]() plugin to enable nested fragments, as in, fragment inside other fragments.
 
 ## Installation
 
@@ -10,26 +10,59 @@ npm i reveal.js-nested-fragments
 
 ## Usage
 
+You can have fragments inside fragments like this:
+
 ```html
-<script type="module">
-  import 'reveal.js-nested-fragments/reveal.js-nested-fragments.js';
-</script>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div data-fragment-skip class="fragment fade-in-then-out">
+          <li class="fragment">
+            A first point
+            <ul>
+              <li class="fragment fade-in-then-semi-out">A first subpoint</li>
+              <li class="fragment fade-in-then-semi-out">A second subpoint</li>
+            </ul>
+          </li>
+        </div>
 
-<reveal.js-nested-fragments></reveal.js-nested-fragments>
+        <div data-fragment-skip class="fragment fade-in-then-out">
+          <li class="fragment">
+            A second point
+            <ul>
+              <li class="fragment fade-in-then-semi-out">A third subpoint</li>
+              <li class="fragment fade-in-then-semi-out">A fourth subpoint</li>
+            </ul>
+          </li>
+        </div>
+
+        <div data-fragment-skip class="fragment fade-in-then-out">
+          <li class="fragment">
+            A third point
+            <ul>
+              <li class="fragment fade-in-then-semi-out">A fifth subpoint</li>
+              <li class="fragment fade-in-then-semi-out">A sixth subpoint</li>
+            </ul>
+          </li>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module">
+    import RevealNestedFragments from "reveal.js-nested-fragments";
+
+    import Reveal from "reveal.js";
+
+    let deck = new Reveal({
+      plugins: [RevealNestedFragments],
+    });
+    deck.initialize();
+  </script>
+</body>
 ```
 
+This enables grouping behaviours like `fade-in-then-out`, while having the inner fragments have other behaviours like `fade-in-then-semi-out`.
 
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to minimize the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
+Use `data-fragment-skip` if you want to skip the fragment when going back and forth in the presentation. This is useful if you are defining fragment groups only for the fragment behaviour, but you don't want to actually pause on it during the presentation.
