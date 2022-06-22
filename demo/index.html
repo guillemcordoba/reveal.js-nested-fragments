@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="Description" content="Put your description here." />
+    <base href="/" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #ededed;
+        --r-main-font-size: 24px;
+      }
+
+      .slides {
+        width: 75% !important;
+      }
+
+      .container {
+        top: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+      }
+      .column {
+        flex: 1;
+      }
+
+      section {
+        text-align: left;
+      }
+      .details {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+      }
+    </style>
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/reveal.js/dist/theme/black.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/reveal.js/plugin/highlight/monokai.css"
+    />
+    <title>slides-sl</title>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Categories of Typed Variables</h3>
+          <div style="position: relative">
+            <h4>Scalars (unconsumable)</h4>
+            <li class="fragment fade-in-then-semi-out">Boolean</li>
+            <li class="fragment fade-in-then-semi-out">
+              Integer
+
+              <ul data-fragment-skip class="fragment fade-in-then-out" style="position: absolute; right: 0;">
+                <li class="fragment fade-in-then-semi-out">
+                  Unsigned
+                  <ul>
+                    <li class="fragment fade-in-then-semi-out">
+                      u8 through u64
+                    </li>
+                    <li class="fragment fade-in-then-semi-out">
+                      usize (based on machine architecture)
+                    </li>
+                  </ul>
+                </li>
+                <li class="fragment fade-in-then-semi-out">
+                  Signed
+                  <ul>
+                    <li class="fragment fade-in-then-semi-out">
+                      i8 through i64
+                    </li>
+                    <li class="fragment fade-in-then-semi-out">
+                      isize (based on machine architecture)
+                    </li>
+                  </ul>
+                </li>
+                <li class="fragment fade-in-then-semi-out">
+                  Extra credit
+                  <ul>
+                    <li class="fragment fade-in-then-semi-out">
+                      Other base systems (binary, hex, octal)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fade-in-then-semi-out">
+              Float
+
+              <ul data-fragment-skip class="fragment fade-in-then-out" style="position: absolute; right: 0;">
+                <li class="fragment fade-in-then-semi-out">
+                  Signed
+                  <ul>
+                    <li class="fragment fade-in-then-semi-out">f32 and f64</li>
+                    <li class="fragment fade-in-then-semi-out">
+                      Default is f64
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fade-in-then-semi-out">Char</li>
+            <li class="fragment fade-in-then-semi-out">Unit type</li>
+            <li class="fragment fade-in-then-semi-out">Str literal*</li>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script type="module">
+      import RevealNestedFragments from "../src/index.js";
+
+      import Reveal from "reveal.js";
+
+      let deck = new Reveal({
+        plugins: [RevealNestedFragments],
+      });
+      deck.initialize();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "reveal.js-nested-fragments",
+  "description": "Webcomponent reveal.js-nested-fragments following open-wc recommendations",
+  "license": "MIT",
+  "author": "reveal.js-nested-fragments",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "start": "web-dev-server"
+  },
+  "dependencies": {
+    "reveal.js": "^4.3.1"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.28"
+  },
+  "customElements": "custom-elements.json"
+}
