@@ -25,6 +25,22 @@ function addFragmentToParents(elem) {
   }
 }
 
+function getCurrentFragment() {
+  const currentFragmentEls = document.querySelectorAll(".current-fragment");
+
+  let highestIndex  =0;
+  let currentFragment = undefined;
+
+  for (const el of currentFragmentEls) {
+    if (el.hasAttribute('data-fragment-index') && parseInt(el.attributes['data-fragment-index'].value) > highestIndex) {
+      currentFragment = el;
+      highestIndex = parseInt(el.attributes['data-fragment-index'].value);
+    }
+  }
+
+  return currentFragment
+}
+
 export default () => ({
   id: "nested-fragments",
   init: (deck) => {
@@ -36,16 +52,16 @@ export default () => ({
       addFragmentToParents(event.fragment.parentNode);
     });
     deck.on("fragmenthidden", (event) => {
-      if (event.fragment.dataset.fragmentSkip !== undefined) {
+      const currentFragment = getCurrentFragment();
+      if (!currentFragment) return;
+
+      if ( currentFragment.dataset.fragmentSkip !== undefined) {
         deck.prevFragment();
-      }
+      } else {
 
-      const currentFragmentEls = document.querySelectorAll(".current-fragment");
-      const currentFragment = currentFragmentEls.item(
-        currentFragmentEls.length - 1
-      );
-
-      addFragmentToParents(currentFragment);
+        
+          addFragmentToParents(currentFragment);
+        }
     });
   },
 });
