@@ -1,6 +1,6 @@
 # reveal.js-nested-fragments
 
-A [Reveal.js]() plugin to enable nested fragments, as in, fragment inside other fragments.
+A [Reveal.js](https://revealjs.com/) plugin to enable nested fragments, as in, fragment inside other fragments.
 
 ## Installation
 
